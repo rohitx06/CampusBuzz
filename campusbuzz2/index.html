@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusBuzz</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <header class="bg-blue-700 text-white p-4 shadow-md">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <h1
+          class="text-2xl font-extrabold tracking-wide flex items-center space-x-2"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 5h18M9 3v2m6-2v2m-6 14h6m-7-4h8m1-8v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h10a2 2 0 012 2z"
+            />
+          </svg>
+          <span>CampusBuzz</span>
+        </h1>
+        <nav class="space-x-4">
+          <button onclick="showPage('home')" class="hover:text-gray-300">
+            Home
+          </button>
+          <button onclick="showPage('events')" class="hover:text-gray-300">
+            Events
+          </button>
+          <button onclick="showPage('add')" class="hover:text-gray-300">
+            Add Event
+          </button>
+          <button onclick="showPage('societies')" class="hover:text-gray-300">
+            Societies
+          </button>
+          <button onclick="showPage('profile')" class="hover:text-gray-300">
+            Profile
+          </button>
+          <a href="login.html" class="hover:text-gray-300">Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="p-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4 text-blue-800">
+        Welcome to CampusBuzz 🎓
+      </h2>
+      <p class="text-gray-700 text-lg">
+        Your one-stop app for discovering every event and opportunity on campus.
+        Stay connected, stay informed, and thrive!
+      </p>
+    </section>
+
+    <!-- Event Feed Page -->
+    <section id="events" class="hidden p-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4 text-blue-800">Event Feed</h2>
+      <input
+        id="searchInput"
+        class="w-full p-3 mb-6 border-2 border-blue-300 rounded-lg shadow-sm"
+        placeholder="Search events..."
+      />
+      <div
+        id="eventsContainer"
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+      ></div>
+    </section>
+
+    <!-- Add Event Page -->
+    <section id="add" class="hidden p-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4 text-blue-800">Add New Event</h2>
+      <form id="eventForm" class="space-y-4">
+        <input
+          class="w-full p-3 border-2 border-blue-300 rounded-lg"
+          placeholder="Title"
+          required
+        />
+        <input
+          class="w-full p-3 border-2 border-blue-300 rounded-lg"
+          placeholder="Date (YYYY-MM-DD)"
+          required
+        />
+        <input
+          class="w-full p-3 border-2 border-blue-300 rounded-lg"
+          placeholder="Time (HH:MM)"
+          required
+        />
+        <textarea
+          class="w-full p-3 border-2 border-blue-300 rounded-lg"
+          placeholder="Description"
+          required
+        ></textarea>
+        <button
+          type="submit"
+          class="bg-blue-700 hover:bg-blue-800 text-white px-5 py-2 rounded-lg shadow"
+        >
+          Submit
+        </button>
+      </form>
+    </section>
+
+    <!-- Societies Page -->
+    <section id="societies" class="hidden p-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4 text-blue-800">Join Societies</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div
+          class="bg-white p-4 shadow-lg rounded-xl hover:shadow-xl transition duration-300"
+        >
+          <h3 class="text-xl font-semibold text-blue-700">Coding Club</h3>
+          <p class="text-gray-600 mb-2">Weekly coding contests and projects.</p>
+          <button
+            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+          >
+            Join
+          </button>
+        </div>
+        <div
+          class="bg-white p-4 shadow-lg rounded-xl hover:shadow-xl transition duration-300"
+        >
+          <h3 class="text-xl font-semibold text-blue-700">Debate Society</h3>
+          <p class="text-gray-600 mb-2">
+            Sharpen your argument and public speaking skills.
+          </p>
+          <button
+            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+          >
+            Join
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Page -->
+    <section id="profile" class="hidden p-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4 text-blue-800">Your Profile</h2>
+      <div class="bg-white p-6 rounded-xl shadow-lg">
+        <h3 class="text-2xl font-semibold mb-2 text-gray-800">User</h3>
+        <p class="text-gray-700 mb-4">🎓 Computer Science, 2nd Year</p>
+        <h4 class="font-bold mb-2">🏅 Earned Badges:</h4>
+        <ul class="list-disc pl-5 text-gray-700">
+          <li>Hackathon Hero</li>
+          <li>Workshop Warrior</li>
+          <li>Campus Contributor</li>
+        </ul>
+      </div>
+    </section>
+    <section id="login" class="hidden p-5 max-w-6xl mx-auto"></section>
+
+    <script>
+      const pages = ["home", "events", "add", "societies", "profile"];
+      function showPage(pageId) {
+        pages.forEach((id) =>
+          document.getElementById(id).classList.add("hidden")
+        );
+        document.getElementById(pageId).classList.remove("hidden");
+      }
+
+      const eventsContainer = document.getElementById("eventsContainer");
+      const searchInput = document.getElementById("searchInput");
+      let events = [];
+
+      async function fetchEvents() {
+        try {
+          const response = await fetch("http://localhost:3000/api/events");
+          events = await response.json();
+          displayEvents(events);
+        } catch (error) {
+          console.error("Error fetching events:", error);
+          eventsContainer.innerHTML =
+            '<p class="text-red-500">Failed to load events.</p>';
+        }
+      }
+
+      function displayEvents(filteredEvents) {
+        eventsContainer.innerHTML = "";
+        filteredEvents.forEach((event) => {
+          const card = document.createElement("div");
+          card.className =
+            "bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition";
+          card.innerHTML = `
+          <h3 class="text-xl font-semibold mb-2 text-blue-800">${event.title}</h3>
+          <p class="text-gray-600 mb-2">📅 ${event.date} | 🕒 ${event.name}</p>
+          <p class="mb-4 text-gray-700">${event.description}</p>
+          <button class="w-full bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md">View Details</button>
+        `;
+          eventsContainer.appendChild(card);
+        });
+      }
+
+      searchInput?.addEventListener("input", (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filtered = events.filter((event) =>
+          event.title.toLowerCase().includes(searchTerm)
+        );
+        displayEvents(filtered);
+      });
+
+      fetchEvents();
+      showPage("home");
+    </script>
+  </body>
+</html>
